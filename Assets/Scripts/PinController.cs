@@ -4,11 +4,46 @@ using UnityEngine;
 
 public class PinController : MonoBehaviour {
 
-    public bool isCollapse = false;
+    private bool isCollapse = false;
+
+    public bool GetIsCollapse()
+    {
+        return this.isCollapse;
+    }
+
+    private int point;
+
+    public int GetPoint()
+    {
+        if (isCollapse)
+        {
+            return point;
+        }
+        else
+        {
+            return 0;
+        }
+        
+    }
 
     // Use this for initialization
     void Start () {
-		
+        switch (this.tag)
+        {
+            case "WhitePinTag":
+                point = 1;
+                break;
+            case "BluePinTag":
+                point = 5;
+                break;
+            case "RedPinTag":
+                point = 10;
+                break;
+            default:
+                point = 0;
+                break;
+        }
+        
 	}
 	
 	// Update is called once per frame
