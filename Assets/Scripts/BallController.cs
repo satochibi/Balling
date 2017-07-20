@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BallState
-{
-    Stop,Force,Going,End
-}
+
 
 public class BallController : MonoBehaviour {
 
     public float thrust;
 
-    public BallState state;
 
     private Vector3 initPos;
     private Vector3 initAng;
@@ -20,76 +16,21 @@ public class BallController : MonoBehaviour {
     void Start () {
         initPos = this.transform.position;
         initAng = this.transform.eulerAngles;
+        //this.GetComponent<Rigidbody>().AddForce(transform.forward * thrust);
     }
 	
 	// Update is called once per frame
 	void Update () {
-
-
-        switch (state)
-        {
-            case BallState.Stop:
-                this.GetComponent<Rigidbody>().isKinematic = true;
-                break;
-            case BallState.Force:
-                this.GetComponent<Rigidbody>().isKinematic = false;
-                this.GetComponent<Rigidbody>().AddForce(transform.forward * thrust);
-                this.state = BallState.Going;
-                break;
-            case BallState.Going:
-                if (this.GetComponent<Rigidbody>().velocity.magnitude <= 0.03f)
-                {
-                    this.state = BallState.End;
-                }
-                break;
-            case BallState.End:
-                this.PinDestroy();
-                this.Respawn();
-                this.state = BallState.Stop;
-                break;
-                
-        }
-
-        Debug.Log(state);
         
+        Vector3 value = new Vector3(Input.acceleration.x, 0, Input.acceleration.y);
+        //transform.position += new Vector3();
+
+        this.GetComponent<Rigidbody>().AddForce(value.normalized * thrust);
         
-	}
-
-
-    public void SetAngleLeft()
-    {
-        if (this.state == BallState.Stop)
-        {
-            transform.eulerAngles =
-            new Vector3(
-            transform.eulerAngles.x,
-            transform.eulerAngles.y - 0.1f,
-            transform.eulerAngles.z
-            );
-        }
     }
 
-    public void SetAngleRight()
-    {
-        if (this.state == BallState.Stop)
-        {
-            transform.eulerAngles =
-            new Vector3(
-            transform.eulerAngles.x,
-            transform.eulerAngles.y + 0.1f,
-            transform.eulerAngles.z
-            );
-        }
-    }
 
-    public void SetBallGo()
-    {
-        if (this.state == BallState.Stop)
-        {
-            this.state = BallState.Force;
-
-        }
-    }
+    
 
     public void PinDestroy()
     {
