@@ -52,8 +52,8 @@ public class PinController : MonoBehaviour {
         //倒れている判定を出すには、
         //X軸に対して60度~300度は倒れている
         //または、Z軸に対して60度~300度は倒れている
-        if((60f < transform.eulerAngles.x && transform.eulerAngles.x < 300f) ||
-            (60f < transform.eulerAngles.z && transform.eulerAngles.z < 300f))
+        if((30f < transform.eulerAngles.x && transform.eulerAngles.x < 360f-30f) ||
+            (30f < transform.eulerAngles.z && transform.eulerAngles.z < 360f-30f))
         {
             
             //Debug.Log("倒れている");

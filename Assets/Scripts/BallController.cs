@@ -12,6 +12,8 @@ public class BallController : MonoBehaviour {
     private Vector3 initPos;
     private Vector3 initAng;
 
+    public bool isUseAcceleration = true;
+
     // Use this for initialization
     void Start () {
         initPos = this.transform.position;
@@ -23,16 +25,35 @@ public class BallController : MonoBehaviour {
 	void Update () {
         
         Vector3 value = new Vector3(Input.acceleration.x, 0, Input.acceleration.y);
-        //transform.position += new Vector3();
+        //transform.position += value.normalized * 0.1f;
 
-        this.GetComponent<Rigidbody>().AddForce(value.normalized * thrust);
-        
+        if (isUseAcceleration)
+        {
+            this.GetComponent<Rigidbody>().AddForce(value.normalized * thrust);
+
+        }
+        else
+        {
+            //if (this.GetComponent<Rigidbody>().velocity.magnitude <= 0.2f)
+            //{
+            //    NextBall();
+            //}
+        }
+
+        //Debug.Log(this.GetComponent<Rigidbody>().velocity.magnitude);
     }
 
 
-    
 
-    public void PinDestroy()
+    public void NextBall()
+    {
+        PinDestroy();
+        Respawn();
+
+    }
+
+
+    private void PinDestroy()
     {
         GameObject[] whitePins = GameObject.FindGameObjectsWithTag("WhitePinTag");
         GameObject[] bluePins = GameObject.FindGameObjectsWithTag("BluePinTag");
@@ -76,10 +97,11 @@ public class BallController : MonoBehaviour {
         }
     }
 
-    public void Respawn()
+    private void Respawn()
     {
         this.transform.position = this.initPos;
         this.transform.eulerAngles = this.initAng;
+        this.isUseAcceleration = true;
     }
 
 }
