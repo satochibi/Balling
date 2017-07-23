@@ -70,6 +70,7 @@ public class PointController : MonoBehaviour {
             "R: " + redFallingPinCount + "/" + redPins.Length + "\n" +
             "B: " + blueFallingPinCount + "/" + bluePins.Length + "\n" +
             "W: " + whiteFallingPinCount + "/" + whitePins.Length + "\n" +
-            "Score: " + score;
+            "Score: " + score + "\n" +
+            "TotalScore:" + GameObject.Find("GameManager").GetComponent<GameManagerController>().GetTotalScore();
 	}
 }

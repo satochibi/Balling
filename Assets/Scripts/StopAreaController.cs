@@ -17,9 +17,13 @@ public class StopAreaController : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.gameObject.tag == "Ball")
+        if (other.gameObject.tag == "Ball" && other.gameObject.GetComponent<BallController>().isUseAcceleration == true)
         {
             other.gameObject.GetComponent<BallController>().isUseAcceleration = false;
+        }
+        else if (other.gameObject.tag == "Ball" && other.gameObject.GetComponent<BallController>().isUseAcceleration == false)
+        {
+            Destroy(other.gameObject);
         }
     }
 }
