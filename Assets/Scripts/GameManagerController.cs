@@ -15,6 +15,11 @@ public class GameManagerController : MonoBehaviour {
         BallRespawn();
     }
 
+    void Awake()
+    {
+        Application.targetFrameRate = 60; //60FPSに設定
+    }
+
     // Update is called once per frame
     void Update()
     {
