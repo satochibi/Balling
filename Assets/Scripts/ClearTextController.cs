@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class ClearTextController : MonoBehaviour {
@@ -20,6 +21,11 @@ public class ClearTextController : MonoBehaviour {
         if (whitePins.Length==0 && bluePins.Length == 0 && redPins.Length == 0)
         {
             this.GetComponent<Text>().text = "Clear!!";
+            if (Input.GetMouseButton(0))
+            {
+                SceneManager.LoadScene("GameScene");
+
+            }
         }
     }
 }
