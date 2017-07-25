@@ -71,6 +71,7 @@ public class PointController : MonoBehaviour {
             "B: " + blueFallingPinCount + "/" + bluePins.Length + "\n" +
             "W: " + whiteFallingPinCount + "/" + whitePins.Length + "\n" +
             "Score: " + score + "\n" +
-            "TotalScore:" + GameObject.Find("GameManager").GetComponent<GameManagerController>().GetTotalScore();
-	}
+            "TotalScore: " + GameObject.Find("GameManager").GetComponent<GameManagerController>().GetTotalScore() + "\n" +
+            "Turn: " + GameObject.Find("GameManager").GetComponent<GameManagerController>().GetTurn();
+    }
 }

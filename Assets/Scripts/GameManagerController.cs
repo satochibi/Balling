@@ -55,6 +55,11 @@ public class GameManagerController : MonoBehaviour {
         return this.totalScore;
     }
 
+    public int GetTurn()
+    {
+        return this.turn;
+    }
+
     private void NextBall()
     {
         this.totalScore += PinDestroy();

@@ -20,7 +20,8 @@ public class ClearTextController : MonoBehaviour {
 
         if (whitePins.Length==0 && bluePins.Length == 0 && redPins.Length == 0)
         {
-            this.GetComponent<Text>().text = "Clear!!";
+            this.GetComponent<Text>().text = "GameClear!!" + "\n" + "TotalScore: " +
+                GameObject.Find("GameManager").GetComponent<GameManagerController>().GetTotalScore();
             if (Input.GetMouseButton(0))
             {
                 SceneManager.LoadScene("GameScene");
