@@ -1,17 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
-public class PointController : MonoBehaviour {
+public class PointController : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    [SerializeField] UIDocument uiDoc;
+
+
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         //ピンを探す
         GameObject[] whitePins = GameObject.FindGameObjectsWithTag("WhitePinTag");
         GameObject[] bluePins = GameObject.FindGameObjectsWithTag("BluePinTag");
@@ -21,7 +28,8 @@ public class PointController : MonoBehaviour {
         int whiteFallingPinCount = 0;
         int blueFallingPinCount = 0;
         int redFallingPinCount = 0;
-        
+
+
         //白に対して、
         foreach (GameObject whitePin in whitePins)
         {
@@ -33,7 +41,7 @@ public class PointController : MonoBehaviour {
                 //倒れているピンを数える
                 whiteFallingPinCount++;
             }
-            
+
         }
 
         //青に対して、
@@ -64,14 +72,17 @@ public class PointController : MonoBehaviour {
 
         }
 
-
         //ポイントを表示
-        this.GetComponent<Text>().text =
-            "R: " + redFallingPinCount + "/" + redPins.Length + "\n" +
-            "B: " + blueFallingPinCount + "/" + bluePins.Length + "\n" +
-            "W: " + whiteFallingPinCount + "/" + whitePins.Length + "\n" +
-            "Score: " + score + "\n" +
-            "TotalScore: " + GameObject.Find("GameManager").GetComponent<GameManagerController>().GetTotalScore() + "\n" +
-            "Turn: " + GameObject.Find("GameManager").GetComponent<GameManagerController>().GetTurn();
+        var label = uiDoc.rootVisualElement.Q<Label>("ScoreLabel");
+        label.text =
+                "R: " + redFallingPinCount + "/" + redPins.Length + "\n" +
+                "B: " + blueFallingPinCount + "/" + bluePins.Length + "\n" +
+                "W: " + whiteFallingPinCount + "/" + whitePins.Length + "\n" +
+                "Score: " + score + "\n" +
+                "TotalScore: " + GameObject.Find("GameManager").GetComponent<GameManagerController>().GetTotalScore() + "\n" +
+                "Turn: " + GameObject.Find("GameManager").GetComponent<GameManagerController>().GetTurn();
+
+
     }
+
 }
