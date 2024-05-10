@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:VisualElement name="VisualElement" style="flex-grow: 1;">
         <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ScoreLabel" style="color: rgb(255, 255, 255); height: 26px; align-self: flex-start;" />
-        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ClearLabel" style="align-items: center; justify-content: center; -unity-text-align: upper-center; white-space: nowrap; text-overflow: clip; align-self: center;" />
+        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ClearLabel" style="align-items: center; justify-content: center; -unity-text-align: upper-center; white-space: nowrap; text-overflow: clip; align-self: center;" />
     </ui:VisualElement>
 </ui:UXML>
