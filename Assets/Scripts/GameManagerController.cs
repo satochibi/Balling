@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManagerController : MonoBehaviour {
+public class GameManagerController : MonoBehaviour
+{
 
     public GameObject ballPrefab;
     private int turn = 1;
@@ -11,7 +12,8 @@ public class GameManagerController : MonoBehaviour {
     private float speedThreshold = 0.08f;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         BallRespawn();
     }
 
@@ -70,7 +72,7 @@ public class GameManagerController : MonoBehaviour {
 
     private void BallRespawn()
     {
-        Instantiate(ballPrefab, new Vector3(0,0.21f,-3.5f), Quaternion.identity);
+        Instantiate(ballPrefab, new Vector3(0, 0.21f, -3.5f), Quaternion.identity);
     }
 
     //全体の速度
